@@ -16,8 +16,8 @@ def get_affected_libraries():
     f = urllib.request.urlopen(link)
     output = f.read()
 
-    affected = re.findall(r'([@a-z/-]+?)@([\d.]+)(?:</code>)?</a></li>', str(output))
-    return sorted(affected, key=itemgetter(0))
+    affected = re.findall(r'([@a-z0-9/_-]+?)@([\d.]+)(?:</code>)?</a></li>', str(output))
+    return list(set(sorted(affected, key=itemgetter(0))))
 
 
 def run_gh(args, capture_bytes=False):
