@@ -16,6 +16,7 @@ def get_affected_libraries():
     f = urllib.request.urlopen(link)
     output = f.read()
 
+    # one package has actually 2 links in the name and thus does not match
     affected = re.findall(r'([@a-z0-9/_-]+?)@([\d.]+)(?:</code>)?</a></li>', str(output))
     return list(set(sorted(affected, key=itemgetter(0))))
 
