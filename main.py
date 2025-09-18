@@ -149,9 +149,9 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('-f', '--force', help='Refetch all package-log.json files', action='store_true')
-    parser.add_argument("--org", default="jurriaanr")
-    parser.add_argument("--out", default="all-package-locks.txt")
-    parser.add_argument("--include-archived", action="store_true")
+    parser.add_argument("--org", help='The name of the organization/user', default="jurriaanr")
+    parser.add_argument("--out", help='The output file for the combined lock files', default="all-package-locks.txt")
+    parser.add_argument("--include-archived", help='By default archived repositories are ignored', action="store_true")
 
     args = parser.parse_args()
 
