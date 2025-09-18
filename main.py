@@ -16,7 +16,7 @@ def get_affected_libraries():
     f = urllib.request.urlopen(link)
     output = f.read()
 
-    affected = re.findall(r'<code>([@a-z/-]+)@([\d\\.]+)</code>', str(output))
+    affected = re.findall(r'<code>([@a-z/-]+?)@([\d.]+)</code>', str(output))
     return sorted(affected, key=itemgetter(0))
 
 
@@ -162,6 +162,7 @@ def main():
         packages = f.read()
 
     affected = get_affected_libraries()
+    print(affected)
     found = []
 
     print('\nFound %d affected libraries:\n' % len(affected))
