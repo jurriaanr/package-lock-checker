@@ -1,6 +1,8 @@
 Scan package-lock.json files on all repositories within an organization on a known list of crowdstrike vulnerabilities.
 Can be easily adjusted to use any list of libraries in the future.
 
+This script uses the [Github CLI](https://cli.github.com) to perform the search and retrieve the contents of the files.
+
     usage: main.py [-h] [-f] [--org ORG] [--out OUT] [--include-archived]
     
     options:
