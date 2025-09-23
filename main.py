@@ -163,7 +163,7 @@ def main():
         packages = f.read()
 
     affected = get_affected_libraries()
-    print(affected)
+
     found = []
 
     print('\nFound %d affected libraries:\n' % len(affected))
