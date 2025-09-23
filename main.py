@@ -14,10 +14,14 @@ import urllib.request
 def get_affected_libraries():
     link = "https://socket.dev/api/blog/feed.atom"
     f = urllib.request.urlopen(link)
-    output = f.read()
+    output = str(f.read())
+
+    if not (re.search('Updated and Ongoing Supply Chain Attack Targets CrowdStrike npm Packages', output, re.IGNORECASE)):
+        print("Article possibly no longer in atom file, check title or find another source list")
+        sys.exit(1)
 
     # one package has actually 2 links in the name and thus does not match
-    affected = re.findall(r'([@a-z0-9/_-]+?)@([\d.]+)(?:</code>)?</a></li>', str(output))
+    affected = re.findall(r'([@a-z0-9/_-]+?)@([\d.]+)(?:</code>)?</a></li>', output)
     return list(set(sorted(affected, key=itemgetter(0))))
 
 
